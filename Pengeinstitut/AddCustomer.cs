@@ -12,7 +12,6 @@ namespace Pengeinstitut
 
         public string Email { get; set; }
 
-
         public void CreateCustomer()
         {
             Console.WriteLine("\nCreate customer");
@@ -25,12 +24,15 @@ namespace Pengeinstitut
 
             Console.Write("CPR: ");
             Cpr = Convert.ToInt64(Console.ReadLine());
+            Console.WriteLine();
 
             Console.WriteLine($"You created a customer: \nName: {Name} \nEmail {Email} \nCpr: {Cpr}");
 
             Console.WriteLine("Press enter to go back");
             Console.ReadLine();
-
+            
+            
+            
         }
     }
 }
