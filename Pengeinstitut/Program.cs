@@ -8,8 +8,11 @@ namespace Pengeinstitut
         private static bool LoopContinue { get; set; }
 
         private static int GoTo { get; set; }
+
+        // En liste der gør at jeg kan parre en customer med en account
         private static List<AddCustomer> customers = new List<AddCustomer>();
 
+        // Main menu metoden, hvor man vælger hvad man vil i gøre i programmet
         private static void ChooseOption()
         {
             Console.WriteLine("Choose an option");
@@ -22,31 +25,40 @@ namespace Pengeinstitut
         }
         static void Main(string[] args)
         {
+            // Loopet er true så det kører hele tiden
             LoopContinue = true;
 
             ChooseOption();
 
+            // De forskellige valgmuligheder i main menuen kører i et loop. 
             while (LoopContinue)
             {
+
                 switch (GoTo)
                 {
+                    // Skriver man 1 laver man en customer.
                     case 1:
                         AddCustomer customer = new AddCustomer();
                         customer.CreateCustomer();
+                        // Tillføjer den nylig lavet customer til listen.
                         customers.Add(customer);
                         LoopContinue = true;
                         ChooseOption();
                         break;
 
+                    // Skriver man 2 laver man en account til en customer.
                     case 2:
                         AddAccount account = new AddAccount();
+                        // Jeg tager min liste (customers) med over i CreateAccount.
                         account.CreateAccount(customers);
                         LoopContinue = true;
                         ChooseOption();
                         break;
 
+                    // Skriver man alt andet kører loopet bare igen og man kan vælge forfra.
                     default:
                         Console.WriteLine("Choose one of the options!\n");
+                        ChooseOption();
                         LoopContinue = true;
                         break;
                 }

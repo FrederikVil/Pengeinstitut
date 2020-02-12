@@ -8,6 +8,7 @@ namespace Pengeinstitut
     {
         public int Accountnumber { get; set; } = 0;
 
+        // En metode der tjekker om man skriver et tal der svarer til et af CPR nummrene på listen.
         private AddCustomer FindCustomerByCpr(List<AddCustomer> customerList, double choose)
         {
             foreach (AddCustomer c in customerList)
@@ -20,6 +21,7 @@ namespace Pengeinstitut
             return null;
         }
 
+        // Jeg har min liste over costumers, hvor jeg looper igennem dem alle og printer deres navn og CPR ud.
         public void CreateAccount(List<AddCustomer> customerList)
         {
             Console.WriteLine("\nCreate account");
@@ -27,11 +29,12 @@ namespace Pengeinstitut
             Console.WriteLine("Which customer do you want to create an account for?\n");
             foreach(AddCustomer c in customerList)
             {
-                Console.WriteLine($"{c.Name} {c.Cpr}");
+                Console.WriteLine($"Name: {c.Name} CPR: {c.Cpr}");
             }
             Console.WriteLine();
             Console.Write("Select an option(cpr): ");
             double choose = Convert.ToDouble(Console.ReadLine());
+            // Currentcustomer er det CPR nummer man lige har skrevet ind.
             AddCustomer currentCustomer = FindCustomerByCpr(customerList, choose);
             Console.WriteLine();
            

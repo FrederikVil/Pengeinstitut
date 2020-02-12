@@ -12,6 +12,7 @@ namespace Pengeinstitut
 
         public string Email { get; set; }
 
+        // Metoden tager input fra brugeren og putter det ind i CreateCustomer, så jeg kan bruge den i min Main til at tilføje Costumers til min liste.
         public void CreateCustomer()
         {
             Console.WriteLine("\nCreate customer");
