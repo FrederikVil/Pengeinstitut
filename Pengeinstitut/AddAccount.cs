@@ -23,7 +23,7 @@ namespace Pengeinstitut
         }
 
         // Jeg har min liste over customers, hvor jeg looper igennem dem alle og printer deres navn og CPR ud.
-        public void CreateAccount(List<AddCustomer> customerList, List<AddAccount> accountList)
+        public void CreateAccount(List<AddCustomer> customerList)
         {
             Console.WriteLine("\nCreate account");
 

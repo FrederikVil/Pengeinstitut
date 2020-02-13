@@ -31,7 +31,7 @@ namespace Pengeinstitut
             Accountnumber = AccountCounter;
         }
 
-        public void ShowAccount(List<AddCustomer> customerList, List<AddAccount> accountList)
+        public void ShowAccount(List<AddCustomer> customerList)
         {
             Console.WriteLine("\nShow accounts");
 
