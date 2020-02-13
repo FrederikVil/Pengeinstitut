@@ -7,8 +7,10 @@ namespace Pengeinstitut
     class Account
     {
 
+        public  int Accountnumber { get; set; }
         public double Balance { get; set; }
         public double Interestrate { get; set; }
+        public static int AccountCounter = 0;
 
         private AddCustomer FindCustomerByCpr(List<AddCustomer> customerList, double choose)
         {
@@ -20,6 +22,13 @@ namespace Pengeinstitut
                 }
             }
             return null;
+        }
+
+        // Hver gang ny konto laves, får den et højere nummer.
+        public  Account()
+        {
+            AccountCounter++;
+            Accountnumber = AccountCounter;
         }
 
         public void ShowAccount(List<AddCustomer> customerList, List<AddAccount> accountList)
@@ -40,16 +49,13 @@ namespace Pengeinstitut
 
             Console.WriteLine($"Showing accounts for {currentCustomer.Name}\n");
 
-            foreach (AddAccount a in accountList)
+            // Printer current customer accounts ud.
+            foreach (Account a in currentCustomer.Accounts)
             {
-                if (currentCustomer.Cpr == a.Accountnumber + 1)
-                {
-                    Console.WriteLine($"Account number: {a.Accountnumber}");
-                }
-                
-            }
+                Console.WriteLine($"Account number: {a.Accountnumber}");
 
-            Console.WriteLine("Press enter to go back");
+            }
+            Console.WriteLine("\nPress enter to go back");
             Console.ReadLine();
         }
     }

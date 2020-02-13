@@ -11,7 +11,7 @@ namespace Pengeinstitut
 
         // En liste der gør at jeg kan parre en customer med en account
         private static List<AddCustomer> customers = new List<AddCustomer>();
-        private static List<AddAccount> customerAccounts = new List<AddAccount>();
+        public static List<AddAccount> customerAccounts = new List<AddAccount>();
 
         // Main menu metoden, hvor man vælger hvad man vil i gøre i programmet
         private static void ChooseOption()
@@ -52,7 +52,7 @@ namespace Pengeinstitut
                     case 2:
                         AddAccount addAccount = new AddAccount();
                         // Jeg tager min liste (customers) med over i CreateAccount.
-                        addAccount.CreateAccount(customers);
+                        addAccount.CreateAccount(customers, customerAccounts);
                         customerAccounts.Add(addAccount);
                         LoopContinue = true;
                         ChooseOption();

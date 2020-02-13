@@ -7,7 +7,7 @@ namespace Pengeinstitut
     class AddAccount : AddCustomer
     {
 
-        public long Accountnumber { get; set; }
+     //   public int Accountnumber { get; set; } = 1;
 
         // En metode der tjekker om man skriver et tal der svarer til et af CPR nummrene på listen.
         private AddCustomer FindCustomerByCpr(List<AddCustomer> customerList, double choose)
@@ -22,8 +22,8 @@ namespace Pengeinstitut
             return null;
         }
 
-        // Jeg har min liste over costumers, hvor jeg looper igennem dem alle og printer deres navn og CPR ud.
-        public void CreateAccount(List<AddCustomer> customerList)
+        // Jeg har min liste over customers, hvor jeg looper igennem dem alle og printer deres navn og CPR ud.
+        public void CreateAccount(List<AddCustomer> customerList, List<AddAccount> accountList)
         {
             Console.WriteLine("\nCreate account");
 
@@ -36,13 +36,21 @@ namespace Pengeinstitut
             Console.Write("Select an option(cpr): ");
             long choose = Convert.ToInt64(Console.ReadLine());
             // Currentcustomer er det CPR nummer man lige har skrevet ind.
-            AddCustomer currentCustomer = FindCustomerByCpr(customerList, choose);
+            AddCustomer currentCustomer = FindCustomerByCpr(customerList, choose);         
             Console.WriteLine();
-           
-            Console.WriteLine($"Thank you for creating an account {currentCustomer.Name}. The account number to your new account is {Accountnumber = currentCustomer.Cpr - 1}");
+
+            // Ny account laves til den valgte customer.
+            Account newAccount = new Account();
+            newAccount.Balance = 0;
+            newAccount.Interestrate = 10;
+            // Den nyye account bliver tilføjet til den current customers account liste.
+            currentCustomer.Accounts.Add(newAccount);
+
+            Console.WriteLine($"Thank you for creating an account {currentCustomer.Name}. The account number to your new account is {newAccount.Accountnumber}");
             
             Console.WriteLine("Press enter to go back");
             Console.ReadLine();
         }
+        
     }
 }
