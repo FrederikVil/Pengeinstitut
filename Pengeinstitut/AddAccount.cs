@@ -6,7 +6,8 @@ namespace Pengeinstitut
 {
     class AddAccount : AddCustomer
     {
-        public int Accountnumber { get; set; } = 0;
+
+        public long Accountnumber { get; set; }
 
         // En metode der tjekker om man skriver et tal der svarer til et af CPR nummrene på listen.
         private AddCustomer FindCustomerByCpr(List<AddCustomer> customerList, double choose)
@@ -33,14 +34,13 @@ namespace Pengeinstitut
             }
             Console.WriteLine();
             Console.Write("Select an option(cpr): ");
-            double choose = Convert.ToDouble(Console.ReadLine());
+            long choose = Convert.ToInt64(Console.ReadLine());
             // Currentcustomer er det CPR nummer man lige har skrevet ind.
             AddCustomer currentCustomer = FindCustomerByCpr(customerList, choose);
             Console.WriteLine();
            
-            Console.WriteLine($"Thank you for creating an account {currentCustomer.Name}. The account number to your new account is {Accountnumber}");
+            Console.WriteLine($"Thank you for creating an account {currentCustomer.Name}. The account number to your new account is {Accountnumber = currentCustomer.Cpr - 1}");
             
-
             Console.WriteLine("Press enter to go back");
             Console.ReadLine();
         }
